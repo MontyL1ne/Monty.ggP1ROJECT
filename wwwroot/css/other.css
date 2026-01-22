@@ -1,0 +1,144 @@
+﻿html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+
+/*кнопка вверъ*/
+#scrollBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    cursor: pointer;
+    border-radius: 999px;
+    backdrop-filter: blur(5px);
+    border: 1px solid #0000004b;
+    color: rgba(212, 212, 212, 0.457);
+    background: rgba(41, 41, 41, 0.616);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.708);
+
+    width: 50px;
+    height: 50px;
+
+    bottom: 235px;
+
+    margin: 5px;
+    transition: all 0.3s;
+
+    z-index: 999;
+    
+    opacity: 0;
+    pointer-events: !important;
+    touch-action: manipulation;
+}
+#scrollBtn:hover, 
+#scrollBtn:focus{
+	background: rgba(41, 41, 41, 0.8);
+	z-index: 4;
+}
+#scrollBtn:hover::before,
+#scrollBtn:focus::before{
+	transform: translate(-50%, -50%) scale(1);
+}
+#scrollBtn::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0.5;
+    border-radius: 999px;
+
+	width: calc(100% + 8px);
+	height: calc(100% + 8px);
+
+    background: linear-gradient(45deg, rgba(95, 95, 95, 0.3), rgba(0, 0, 0, 0.5));
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s;
+    z-index: 445;
+}
+
+#scrollBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+
+
+/* базовая стеклянная кнопка */
+.buttonLiquidGlassStyle{
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.33);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.97);
+    cursor: pointer;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 999px;
+    color: rgba(255,255,255,0.85);
+    -webkit-backdrop-filter: blur(10px);
+    outline: none;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.buttonLiquidGlassStyle::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 999px;
+    opacity: 0.5;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    background: linear-gradient(45deg, rgba(95, 95, 95, 0.3), rgba(0, 0, 0, 0.5));
+    
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    transition: transform 0.3s;
+    z-index: 0;
+    
+    background: linear-gradient(45deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35));
+    transition: transform 0.25s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.buttonLiquidGlassStyle:hover{
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+}
+
+.buttonLiquidGlassStyle:hover::before{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.buttonLiquidGlassStyle img{
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+@media (max-width: 768px) {
+    #scrollBtn {
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #scrollBtn {
+        top: 0px;
+        right: 5px;
+    }
+}

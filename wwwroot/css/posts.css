@@ -1,0 +1,486 @@
+﻿/* posts.css — стили ленты/постов (твой прежний стиль + сетка) */
+
+/* POSTS CONTAINER — СЕТКА */
+#postsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 16px;
+    padding: 12px 12px 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* чтобы карточки не растягивались по высоте */
+#postsContainer > .post {
+    height: fit-content;
+}
+
+/* POST CARD — ТВОЙ СТИЛЬ (как на фото) */
+.post {
+    width: 300px;
+    aspect-ratio: 4 / 6.5;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: flex-start;
+
+    transition: box-shadow 0.3s, background 0.3s, transform 0.25s ease;
+
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid #0000004b;
+
+    padding: 18px;
+    height: auto;
+    margin: 0;
+    color: #ffffff70;
+    position: relative;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+
+    opacity: 1;
+    transform: translateY(12px);
+    animation: postFade 0.35s ease forwards;
+}
+
+
+@keyframes postFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.post:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   ШАПКА ПОСТА
+   ========================= */
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+}
+
+.post-author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-author-name {
+    font-weight: bold;
+    color: #ffffffc9;
+}
+
+.post-time {
+    font-size: 12px;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+/* POST TEXT */
+.post-text{
+  max-height: 100px;
+  overflow: hidden;
+  position: relative;
+
+  line-height: 1.6;
+  margin: 0;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+
+}
+
+/* =========================
+   MENU BTN (⋯) + POPUP
+   ========================= */
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    color: #ffffffaa;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.menu-btn:hover {
+    color: #fff;
+}
+
+.post-menu {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    min-width: 160px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.7s ease, transform 0.2s ease;
+}
+
+.post-menu[style*="block"] {
+    opacity: 1;
+    transform: translateY(0);
+    background: none;
+    backdrop-filter: blur(55px);
+}
+
+.menu-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-item.danger {
+    color: #ff6b6b;
+}
+
+.menu-item.danger:hover {
+    background: rgba(255, 107, 107, 0.15);
+}
+
+/* =========================
+   РЕДАКТИРОВАНИЕ ПОСТА
+   ========================= */
+
+.inline-editor {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    max-height: none;
+    overflow: visible;
+    height: auto;
+    padding: 14px 16px;
+    margin: 8px 0 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    animation: editorAppear 0.18s ease-out;
+}
+
+@keyframes editorAppear {
+    from { opacity: 0; transform: scale(0.97); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.edit-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+.edit-status {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.save-edit-btn,
+.cancel-edit-btn {
+    min-width: 110px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid #0000004b;
+    background: rgba(0, 0, 0, 0.32);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.save-edit-btn:hover,
+.cancel-edit-btn:hover {
+    background: rgba(41, 41, 41, 0.75);
+    transform: translateY(-1px);
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.7);
+}
+
+.cancel-edit-btn {
+    color: #ffb6b6;
+}
+
+/* toast */
+.edit-warning-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.edit-warning-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================
+   IMAGES IN POST
+   ========================= */
+
+
+.post-images.post-images--single {
+    justify-items: center;
+}
+
+.post .post-images {
+    margin-top: auto;
+}
+
+.post-images.post-images--single .image-wrapper {
+    max-width: 80%;
+    width: 100%;
+}
+
+.post-images.post-images--multi {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: start;
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;  
+    border-radius: 16px;
+    background: radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 0, 0, 0.7)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.image-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.post .image-wrapper,
+.post .image-wrapper:hover {
+    box-shadow: none;
+}
+
+.post-image {
+    width: 100%;
+    height: 320px; 
+    object-fit:cover;
+    align-self:center;
+    object-position: center;
+    display: block !important; 
+}
+
+.image-wrapper:hover .post-image {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+}
+
+/* ориентация */
+.image-wrapper--landscape .post-image {
+    max-height: 280px;
+    width: 100%;
+}
+
+.image-wrapper--portrait {
+    justify-self: center;
+}
+
+.image-wrapper--portrait .post-image {
+    max-height: 520px;
+    width: auto;
+    margin: auto;
+}
+
+/* fullscreen btn inside image */
+.fullscreen-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.708);
+    border: 1px solid #0000004b;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: scale(0.85);
+    z-index: 3;
+    outline: none;
+}
+
+.fullscreen-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 999px;
+    opacity: 0.5;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: linear-gradient(45deg, rgba(95, 95, 95, 0.3), rgba(0, 0, 0, 0.5));
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    transition: transform 0.3s;
+    z-index: 0;
+}
+
+.fullscreen-btn img {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+    z-index: 1;
+}
+
+.image-wrapper:hover .fullscreen-btn {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.fullscreen-btn:hover {
+    transform: scale(1.12);
+}
+
+.fullscreen-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.fullscreen-btn:hover img {
+    transform: scale(1.1);
+}
+
+/* remove image btn (edit mode) */
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-image-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.post.editing .remove-image-btn {
+    top: 10px;
+    right: 10px;
+    bottom: auto;
+    left: auto;
+    background: rgba(120, 0, 0, 0.55);
+}
+
+.post.editing .remove-image-btn:hover {
+    background: rgba(180, 0, 0, 0.75);
+}
+
+/* доп. адаптация текста/кнопок поста (из твоего блока 900px) */
+@media (max-width: 900px) {
+
+    .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .post-time {
+        margin-left: 40px;
+    }
+
+    .post {
+        width: calc(50% - 16px);
+        flex: 0 0 calc(50% - 16px);
+        max-width: 300px;
+    }
+
+    .post .image-wrapper{
+        aspect-ratio: 15 / 16;
+        width: 100%;
+    }
+
+    .post-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    #postsContainer {
+        padding: 12px 10px 4px;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-images.post-images--multi {
+        grid-template-columns: 2fr;
+    }
+
+    .image-wrapper--portrait .post-image {
+        max-width: 100%;
+    }
+}

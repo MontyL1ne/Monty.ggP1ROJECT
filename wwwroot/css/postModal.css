@@ -1,0 +1,730 @@
+﻿/* Post Modal */
+
+.post-modal-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: none;
+
+  /* важное: прижимаем модалку ниже навбара */
+  align-items: flex-start;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* отступ сверху равен высоте навбара + небольшой зазор */
+  padding-top: calc(var(--navbar-h, 60px) + 10px);
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+
+/* навбар выше оверлея */
+.navBarMenu{
+  top: 0;
+  z-index: 12000;
+}
+
+/* fullscreen выше пост-модалки */
+.fullscreen-modal{
+  z-index: 13000 !important;
+}
+
+.post-modal,
+.post-modal-body{
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-height: calc(100vh - var(--navbar-h, 60px) - 20px); 
+  flex: 1 1 auto;
+}
+.post-modal::-webkit-scrollbar,
+.post-modal-body::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.post-modal{
+  max-width: calc(1300px - 32px);
+
+  height: calc(100vh - (var(--navbar-h, 60px) + 10px) - 16px);
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 22px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.post-modal-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 14px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.post-modal-author{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.post-modal-author img{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+}
+.post-modal-author .name{
+  color: rgba(255,255,255,0.85);
+  font-size: 17px;
+}
+
+.post-modal-meta{
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+}
+
+.post-modal-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* общая база для круглых кнопок */
+.post-modal-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.35);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  outline: none;
+  padding: 0;
+  transition: transform .25s ease, background .25s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.55);
+}
+.post-modal-btn::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0.5;
+  transition: transform .25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.post-modal-btn:hover{
+  transform: scale(1.06);
+}
+.post-modal-btn:hover::before{
+  transform: translate(-50%, -50%) scale(1);
+}
+.post-modal-btn img{
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+}
+
+/* close (красная) */
+.post-modal-close{
+  border: 1px solid rgba(200,0,0,0.35);
+  background: rgba(120,0,0,0.35);
+}
+.post-modal-close::before{
+  background: linear-gradient(45deg, rgba(255,60,60,0.25), rgba(120,0,0,0.45));
+}
+.post-modal-close:hover{
+  background: rgba(180,0,0,0.55);
+}
+
+/* edit (белая) */
+.post-modal-edit{
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.08);
+}
+.post-modal-edit::before{
+  background: linear-gradient(45deg, rgba(255,255,255,0.18), rgba(0,0,0,0.35));
+}
+.post-modal-edit:hover{
+  background: rgba(255,255,255,0.12);
+}
+
+.post-modal-body{
+  padding: 12px 14px 16px;
+  overflow: auto;
+}
+
+/* Внутри модалки строим “пост” с теми же классами */
+.post-modal-post{
+  width: 100%;
+}
+
+/* скрываем шапку поста внутри модалки */
+.post-modal-post .post-header{
+  display: none;
+}
+
+/* текст */
+.post-modal-post .post-text{
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 22px 0 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.post-modal-title{
+  color: rgba(255,255,255,0.95);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 2px 0 22px;
+  letter-spacing: 0.2px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.post-modal-category{
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(170,210,255,0.9);
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(90,170,255,0.35);
+  background: rgba(20,50,90,0.45);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.edit-field{
+  position: relative;
+  padding: 12px 12px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.edit-field .inline-editor{
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.edit-field .inline-editor:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.edit-field-counter{
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  user-select: none;
+  pointer-events: none;
+}
+
+.post-modal-category-edit{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.post-modal-category-select{
+  min-width: 180px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.9);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  outline: none;
+}
+
+.post-modal-category-select option{
+  background: #101015;
+  color: #fff;
+}
+
+/* фото: row + горизонтальный скролл, высота до 400px */
+.post-modal-post .post-images{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  max-height: 400px;
+  height: min(400px, 45vh);
+
+  justify-content: center;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  padding-bottom: 2px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  /* fade по краям */
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 0%,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%);
+          mask-image: linear-gradient(to right,
+    transparent 0%,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%);
+}
+.post-modal-post .post-images::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.post-modal-post .image-wrapper{
+  flex: 0 0 auto;
+  height: fit-content;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.16);
+  cursor: pointer;
+}
+
+.post-modal-post .image-wrapper{
+  position: relative;
+}
+
+.post-modal-post .remove-image-btn{
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.post-modal-post.editing .image-wrapper:hover .remove-image-btn{
+  opacity: 1;
+}
+
+.post-modal-post .remove-image-btn{
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(200,0,0,0.35);
+  background: rgba(120,0,0,0.35);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  transform: scale(1);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.post-modal-post .remove-image-btn::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0.5;
+  transition: transform .25s ease;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(45deg, rgba(255,60,60,0.25), rgba(120,0,0,0.45));
+}
+
+.post-modal-post .remove-image-btn:hover{
+  background: rgba(180,0,0,0.55);
+  transform: scale(1.06);
+}
+
+.post-modal-post .remove-image-btn:hover::before{
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.post-modal-post .remove-image-btn img{
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.post-modal-post .post-image{
+  display: block;
+  max-height: 45vh;
+  max-width: 80vw;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+
+.post-modal-actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.post-modal-action-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    padding: 0;
+    outline: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-modal-action-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: calc(100% + 6px);   /* 3px с каждой стороны */
+    height: calc(100% + 6px);  /* 3px с каждой стороны */
+
+    border-radius: 999px;
+    opacity: 0.45;
+    background: linear-gradient(45deg, rgba(95, 95, 95, 0.30), rgba(0, 0, 0, 0.50));
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.25s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.post-modal-action-btn:hover {
+    background: rgba(41, 41, 41, 0.75);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+}
+
+.post-modal-action-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.post-modal-action-btn img {
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* меню-кнопка (серые оттенки) */
+.post-modal-menu-btn {
+    /* базовый стиль уже есть */
+}
+
+/* контейнер выезжающих кнопок */
+.post-modal-actions-panel {
+    position: absolute;
+    right: 52px; /* выезжают влево от menu-btn */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    /* плавный выезд влево */
+    transform-origin: right center;
+    transition: opacity 0.2s ease, transform 0.25s ease;
+
+    /* стартовое смещение */
+    transform: translateY(-50%) translateX(10px);
+}
+
+/* состояние открыто */
+.post-modal-actions.is-open .post-modal-actions-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* кнопка редактирования (голубая) */
+.post-modal-edit-btn {
+    border-color: rgba(90, 170, 255, 0.35);
+}
+
+.post-modal-edit-btn::before {
+    background: linear-gradient(
+        45deg,
+        rgba(90, 170, 255, 0.35),
+        rgba(0, 0, 0, 0.50)
+    );
+}
+
+/* кнопка удаления (красная) */
+.post-modal-delete-btn {
+    border-color: rgba(255, 90, 90, 0.35);
+    border-color: rgba(255, 90, 90, 0.35);
+}
+
+.post-modal-delete-btn::before {
+    background: linear-gradient(
+        45deg,
+        rgba(255, 90, 90, 0.40),
+        rgba(0, 0, 0, 0.50)
+    );
+}
+
+#postModalActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+/* обертка для меню и выезжающих кнопок */
+.post-modal-actions-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* базовая круглая кнопка (как close) */
+.post-modal-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    padding: 0;
+    outline: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-modal-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: calc(100% + 6px);   /* 3px с каждой стороны */
+    height: calc(100% + 6px);  /* 3px с каждой стороны */
+
+    border-radius: 999px;
+    opacity: 0.45;
+    background: linear-gradient(45deg, rgba(95, 95, 95, 0.30), rgba(0, 0, 0, 0.50));
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.25s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.post-modal-btn:hover {
+    background: rgba(41, 41, 41, 0.75);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+}
+
+.post-modal-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.post-modal-btn img {
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* меню кнопка (серые) */
+.post-modal-menu {}
+
+/* выезжающая панель (влево от меню) */
+.post-modal-actions-panel {
+    position: absolute;
+    right: 52px; /* выезд влево от menu */
+    top: 50%;
+
+    display: flex;
+    gap: 10px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(-50%) translateX(10px);
+    transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.post-modal-actions-wrap.is-open .post-modal-actions-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* редактирование (голубые) */
+.post-modal-edit {
+    border-color: rgba(90, 170, 255, 0.35);
+}
+.post-modal-edit::before {
+    background: linear-gradient(45deg, rgba(90, 170, 255, 0.35), rgba(0, 0, 0, 0.50));
+}
+
+/* удаление (красные) */
+.post-modal-delete {
+    border-color: rgba(255, 90, 90, 0.35);
+}
+.post-modal-delete::before {
+    background: linear-gradient(45deg, rgba(255, 90, 90, 0.40), rgba(0, 0, 0, 0.50));
+}
+
+/* закрыть (можешь сделать красной, если хочешь) */
+.post-modal-close {
+    border-color: rgba(255, 90, 90, 0.22);
+}
+.post-modal-close::before {
+    background: linear-gradient(45deg, rgba(255, 90, 90, 0.28), rgba(0, 0, 0, 0.50));
+}
+
+@media (max-width: 600px) {
+  .post-modal-overlay{
+    padding-top: calc(var(--navbar-h, 60px) + 8px);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 8px;
+  }
+
+  .post-modal{
+    height: calc(100dvh - var(--navbar-h, 60px) - 16px);
+    max-height: calc(100dvh - var(--navbar-h, 60px) - 16px);
+  }
+
+  .post-modal,
+  .post-modal-body{
+    max-height: calc(100dvh - var(--navbar-h, 60px) - 16px);
+  }
+
+  .post-modal-header{
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  #postModalActions{
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .post-modal-meta{
+    width: 100%;
+    order: 3;
+    margin-top: 4px;
+  }
+
+  .post-modal-actions{
+    order: 2;
+  }
+
+  .post-modal-btn{
+    width: 36px;
+    height: 36px;
+  }
+
+  .post-modal-btn img{
+    width: 18px;
+    height: 18px;
+  }
+
+  .post-modal-actions-panel{
+    right: 0;
+    top: 100%;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-end;
+    transform: translateY(8px);
+    z-index: 2;
+  }
+
+  .post-modal-actions-wrap.is-open .post-modal-actions-panel{
+    transform: translateY(8px);
+  }
+}

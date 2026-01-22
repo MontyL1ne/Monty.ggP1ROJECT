@@ -1,0 +1,351 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\pages\\announcements.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\pages\\announcements.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\pages\\basket.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\pages\\basket.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\pages\\profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\pages\\profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\pages\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\other.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\other.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\homepagestyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\homepagestyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\nevbarstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\nevbarstyles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\js\\postmodal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\js\\postmodal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\postmodal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\postmodal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\js\\postsmain.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\js\\postsmain.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\js\\fullscreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\js\\fullscreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\posts.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\posts.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\js\\editpost.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\js\\editpost.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\js\\customconfirm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\js\\customconfirm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:models\\post.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\wwwroot\\css\\profilestyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\profilestyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\desktop\\vscodefiles\\webapplication2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\posts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:wwwroot\\js\\posts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\createPostUI.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:wwwroot\\js\\createPostUI.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 258,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Basket.html",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\Basket.html",
+              "RelativeDocumentMoniker": "wwwroot\\pages\\Basket.html",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\Basket.html",
+              "RelativeToolTip": "wwwroot\\pages\\Basket.html",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-21T22:32:44.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "announcements.html",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\announcements.html",
+              "RelativeDocumentMoniker": "wwwroot\\pages\\announcements.html",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\announcements.html",
+              "RelativeToolTip": "wwwroot\\pages\\announcements.html",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-21T20:32:04.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "other.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\other.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\other.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\other.css",
+              "RelativeToolTip": "wwwroot\\css\\other.css",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAQwHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-21T20:24:43.981Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "fullscreen.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\fullscreen.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\fullscreen.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\fullscreen.js",
+              "RelativeToolTip": "wwwroot\\js\\fullscreen.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-18T22:04:23.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "customConfirm.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\customConfirm.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\customConfirm.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\customConfirm.js",
+              "RelativeToolTip": "wwwroot\\js\\customConfirm.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-17T20:57:49.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Post.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\Models\\Post.cs",
+              "RelativeDocumentMoniker": "Models\\Post.cs",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\Models\\Post.cs",
+              "RelativeToolTip": "Models\\Post.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T20:11:17.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ProfileStyle.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\ProfileStyle.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\ProfileStyle.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\ProfileStyle.css",
+              "RelativeToolTip": "wwwroot\\css\\ProfileStyle.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-17T20:05:18.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Profile.html",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\Profile.html",
+              "RelativeDocumentMoniker": "wwwroot\\pages\\Profile.html",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\Profile.html",
+              "RelativeToolTip": "wwwroot\\pages\\Profile.html",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-17T20:04:10.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\index.html",
+              "RelativeDocumentMoniker": "wwwroot\\pages\\index.html",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\pages\\index.html",
+              "RelativeToolTip": "wwwroot\\pages\\index.html",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-17T18:56:05.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "editPost.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\editPost.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\editPost.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\editPost.js",
+              "RelativeToolTip": "wwwroot\\js\\editPost.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-17T18:49:53.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T18:45:25.202Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "posts.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\posts.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\posts.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\posts.css",
+              "RelativeToolTip": "wwwroot\\css\\posts.css",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAiwA0BAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-18T20:07:12.896Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 270,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "announcements.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\announcements.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\announcements.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\announcements.css",
+              "RelativeToolTip": "wwwroot\\css\\announcements.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-21T20:31:58.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "posts.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\posts.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\posts.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\posts.js",
+              "RelativeToolTip": "wwwroot\\js\\posts.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-21T12:52:06.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "nevBarStyles.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\nevBarStyles.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\nevBarStyles.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\nevBarStyles.css",
+              "RelativeToolTip": "wwwroot\\css\\nevBarStyles.css",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAwH4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-17T19:18:29.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "postModal.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\postModal.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\postModal.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\postModal.js",
+              "RelativeToolTip": "wwwroot\\js\\postModal.js",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwB4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-18T21:39:42.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "postsMain.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\postsMain.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\postsMain.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\postsMain.js",
+              "RelativeToolTip": "wwwroot\\js\\postsMain.js",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAowPIBAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-17T22:33:07.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "homePageStyle.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\homePageStyle.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\homePageStyle.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\homePageStyle.css",
+              "RelativeToolTip": "wwwroot\\css\\homePageStyle.css",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAAAJsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-18T20:06:10.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "createPostUI.js",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\createPostUI.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\createPostUI.js",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\js\\createPostUI.js",
+              "RelativeToolTip": "wwwroot\\js\\createPostUI.js",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAUwKwAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-17T21:59:03.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "postModal.css",
+              "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\postModal.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\postModal.css",
+              "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\Desktop\\VSCodeFiles\\WebApplication2\\wwwroot\\css\\postModal.css",
+              "RelativeToolTip": "wwwroot\\css\\postModal.css",
+              "ViewState": "AgIAAMEBAAAAAAAAAADwv/UBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-19T20:05:57.095Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

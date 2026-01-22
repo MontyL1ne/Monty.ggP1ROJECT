@@ -1,0 +1,83 @@
+﻿.siteFooterInfo {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+
+    height: 140px;
+    width: 100%;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    border: 1px solid #ffffff9a;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.708);
+
+    .aboutFoot {
+        display: grid;
+        text-align: center;
+        justify-self: stretch;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 1em;
+    }
+
+    .foot1 {
+        border-radius: 5px;
+        height: auto;
+        justify-items: center;
+        align-content: center;
+    }
+
+    .buttonFooter {
+        display: grid;
+        color: rgb(58, 82, 134);
+        background: none;
+        border: none;
+        width: 200px;
+        padding: 10px;
+        border-radius: 10px;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.2); 
+        }
+    }
+
+    .tgFooter, .vkFooter {
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 5px;
+        background-size: cover;
+        transition: box-shadow 0.3s;
+
+        &:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+        }
+    }
+
+    .tgFooter {
+        background-image: url('/images/telegram-fill.svg');
+    }
+
+    .vkFooter {
+        background-image: url('/images/vk-fill.svg');
+    }
+}
+
+@media (max-width: 768px) {
+    .siteFooterInfo {
+        height: auto;
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .siteFooterInfo .aboutFoot {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        text-align: center;
+    }
+}

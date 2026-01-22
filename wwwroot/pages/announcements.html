@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Каталог</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="/css/nevBarStyles.css">
+    <link rel="stylesheet" href="/css/siteSection1.css">
+    <link rel="stylesheet" href="/css/announcements.css">
+    <link rel="stylesheet" href="/css/siteFooterPageStyles.css">
+    <link rel="stylesheet" href="/css/other.css" />
+    <link rel="stylesheet" href="/css/authorization.css" />
+    <link rel="stylesheet" href="/css/customConfirm.css" />
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/postModal.css">
+
+    <script src="/js/script.js" defer></script>
+
+    <script type="module" src="/js/postsMain.js?v=20260121"></script>
+
+    <script src="/js/other.js" defer></script>
+
+    <script src="/js/authorization.js" defer></script>
+</head>
+
+<body>
+    <div class="bg-fixed"></div>
+    <div class="page-wrapper">
+
+        <div class="navBarMenu">
+            <div class="navBarMenuLogoSiteNavBar">Monty.gg</div>
+            <div class="navBarMenuButtons">
+                <button onclick="location.href='/pages/index.html'"
+                        class="navButton">
+                    Главная
+                </button>
+                <button onclick="location.href='/pages/Basket.html'"
+                        class="navButton">
+                    Корзина
+                </button>
+
+                <button class="navButton" id="profileButton">
+                    Профиль
+                </button>
+
+                <button onclick="location.href='/pages/index.html'"
+                        class="miniNavButton">
+                    <img src="/images/home-9-fill.svg" style="width: 100%; height: 100%;" />
+                </button>
+                <button onclick="location.href='/pages/Basket.html'"
+                        class="miniNavButton">
+                    <img src="/images/shopping-basket-fill.svg" style="width: 100%; height: 100%;" />
+                </button>
+                <button onclick="location.href='/pages/Profile.html'"
+                        class="miniNavButton">
+                    <img src="/images/user-fill.svg" style="width: 100%; height: 100%;" />
+                </button>
+            </div>
+        </div>
+
+        <div id="authChoice" class="authChoiceMenu" style="display: none;">
+            <div class="authChoiceContent">
+                <button id="choiceRegister" class="navButtons_reg">Регистрация</button>
+                <button id="choiceLogin" class="navButtons_reg">Вход</button>
+            </div>
+        </div>
+
+        <div id="registrationModal" class="modal">
+            <div class="modal-content">
+                <div class="regText1">
+                    <h2>Регистрация</h2>
+                </div>
+
+                <form id="registrationForm">
+                    <div class="putButtons">
+                        <h2>Имя</h2>
+                        <input type="text" id="regUsername" name="username" required>
+
+                        <h2>Почта</h2>
+                        <input type="email" id="regEmail" name="email" required>
+
+                        <h2>Пароль</h2>
+                        <input type="password" id="regPassword" name="password" required>
+                    </div>
+
+                    <div class="navButtons">
+                        <button type="submit">Далее</button>
+                        <button type="button" class="auth-back-btn">Назад</button>
+                        <span class="close-button" id="closeButton" style="display:none;">&times;</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="authorizationModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeButton2" style="display:none;">&times;</span>
+                <h2>Авторизация</h2>
+
+                <form id="authorizationForm">
+                    <h2>Имя:</h2>
+                    <input type="text" id="authUsername" name="username" required>
+
+                    <h2>Пароль:</h2>
+                    <input type="password" id="authPassword" name="password" required>
+
+                    <div class="navButtons">
+                        <button type="submit">Войти</button>
+                        <button type="button" class="auth-back-btn">Назад</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section class="siteInfo">
+            <div class="block_x">
+                <form id="postForm">
+                    <div id="inputContainer" style="display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.7);">Название</div>
+                        <div class="post-field">
+                            <textarea id="postTitle"
+                                      placeholder="Введите название..."
+                                      required
+                                      rows="1"></textarea>
+                            <div class="post-field-counter" id="postTitleCounter">0/45</div>
+                        </div>
+
+                        <div style="margin-top: 8px; margin-bottom: 6px; color: rgba(255, 255, 255, 0.7);">Описание</div>
+                        <div class="post-field">
+                            <textarea id="postText"
+                                      placeholder="Напишите свой пост..."
+                                      required
+                                      rows="1"></textarea>
+                            <div class="post-field-counter" id="postTextCounter">0/125</div>
+                        </div>
+                        <div id="error-message" style="color: red; display: none;">Достигнут лимит в 125 символов!</div>
+
+                        <div id="categoryBlock" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                            <div style="color: rgba(255, 255, 255, 0.7);">Выберите категорию:</div>
+
+                            <div id="categoryStage1" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+                            <div id="categoryStage2" style="display: none; flex-wrap: wrap; gap: 10px;"></div>
+
+                            <div id="categorySelected" style="display: none; align-items: center; gap: 10px; flex-wrap: wrap;">
+                                <span id="categorySelectedText"></span>
+                                <button type="button" id="categoryResetBtn">
+                                    <img src="/images/close-line.svg" alt="Сбросить">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="previewContainer" style="display: flex; flex-wrap: wrap; margin-top: 10px; color: rgba(255, 255, 255, 0.7);"></div>
+                    </div>
+
+                    <div id="buttonContainer" style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                        <label class="custom-file-upload buttonLiquidGlassStyle" style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;">
+                            <input type="file" id="postImage" accept="image/*" multiple style="display: none;" />
+                            <img src="/images/image-add-line.svg" style="width: 60%; height: 60%; border-radius: 10px; fill: #ffffff; transition: fill 0.3s ease;" />
+                        </label>
+                        <button class="submit-button btn-glass buttonLiquidGlassStyle" style="margin: 0 10px;">Отправить</button>
+                        <button type="button" id="cancelCreatePostBtn" class="cancel-circle-btn buttonLiquidGlassStyle">
+                            <img src="/images/close-line.svg" style="width: 60%; height: 60%;" alt="cancel">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <button id="scrollBtn">
+            <img src="/images/arrow-up-line.svg" style="height: 100%;" alt="Наверх">
+        </button>
+
+        <footer class="siteFooterInfo">
+            <div class="aboutFoot">
+                <div class="foot1"></div>
+                <div class="foot1">
+                    <button onclick="location.href='https://telegra.ph/Magazin-mobilnoj-tehniki-10-31'"
+                            class="buttonFooter">
+                        О сайте
+                    </button>
+                    <button onclick="location.href='https://telegra.ph/Magazin-mobilnoj-tehniki-10-31'"
+                            class="buttonFooter">
+                        Социальные сети
+                    </button>
+                    <button onclick="location.href='https://telegra.ph/Magazin-mobilnoj-tehniki-10-31'"
+                            class="buttonFooter">
+                        Контакты
+                    </button>
+                </div>
+                <div class="foot1">
+                    <button onclick="location.href='https://t.me/MontyLineTG'"
+                            class="tgFooter"></button>
+                    <button onclick="location.href='vk.com/montyline'"
+                            class="vkFooter"></button>
+                </div>
+            </div>
+        </footer>
+
+        <div id="cancelModal" class="cancel-modal">
+            <div class="cancel-modal-window">
+                <p class="cancel-modal-text">Отменить создание поста?</p>
+
+                <div class="cancel-modal-buttons">
+                    <button id="cancelModalYes" class="modal-btn modal-yes">
+                        <img src="/images/check-line.svg" alt="">
+                    </button>
+
+                    <button id="cancelModalNo" class="modal-btn modal-no">
+                        <img src="/images/close-line.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
