@@ -6,11 +6,10 @@ let confirmYesBtn = null;
 let confirmNoBtn = null;
 
 
-// Функция для показа уведомления о том, что изменений не было
-function showEditWarningToast() {
+function showToast(text) {
     const toast = document.createElement("div");
     toast.classList.add("edit-warning-toast");
-    toast.textContent = "Вы не внесли изменения!";
+    toast.textContent = text;
     document.body.appendChild(toast);
 
     setTimeout(() => {
@@ -21,6 +20,11 @@ function showEditWarningToast() {
         toast.classList.remove("visible");
         setTimeout(() => toast.remove(), 300);
     }, 3000);
+}
+
+// Функция для показа уведомления о том, что изменений не было
+function showEditWarningToast() {
+    showToast("Вы не внесли изменения!");
 }
 
 function ensureModalCreated() {
@@ -137,3 +141,5 @@ export function showConfirm({
 
     modal.style.display = "flex";
 }
+
+export { showToast };

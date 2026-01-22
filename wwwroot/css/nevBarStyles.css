@@ -204,6 +204,7 @@ body {
 
     border-radius: 999px;
     z-index: 99999;
+    transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, backdrop-filter 0.35s ease;
 }
 
 
@@ -225,6 +226,7 @@ body {
     color: #00000079;
 
     font: bold 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, color 0.35s ease, border-color 0.35s ease;
 }
 
 .navBarMenuButtons {
@@ -242,6 +244,7 @@ body {
     color: #00000079;
     border: 1px solid #888;
     left: 0px;
+    transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
 }
 
 /* Навбар на планшетах / телефонах */

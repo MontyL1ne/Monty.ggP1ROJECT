@@ -40,10 +40,252 @@ body::-webkit-scrollbar {
 
 .siteInfo{
     user-select: none;
-    background: url('/images/18773486_6033546.jpg');
-    border: dashed 2px rgb(183, 183, 183);
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.253);
     margin-top: 60px;
     width: 100%;
-    height: fit-content;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px 40px;
+
+    background:
+        radial-gradient(1100px 500px at 15% 0%, rgba(80, 160, 255, 0.18), rgba(0,0,0,0)),
+        radial-gradient(900px 500px at 85% 5%, rgba(90, 220, 255, 0.16), rgba(0,0,0,0)),
+        rgba(0, 0, 0, 0.45);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.profile-container{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.registrProfileButtons{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.registrProfileButtons .navButtons_reg{
+    padding: 8px 14px;
+    min-height: 40px;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+#authStatus{
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.35);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.profile-header{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(0,0,0,0.35);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+}
+
+.profile-header .avatar{
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    overflow: visible;
+    flex: 0 0 auto;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.55);
+    position: relative;
+}
+
+.profile-header .avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 999px;
+}
+
+.avatar-edit-btn{
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.45);
+    background: rgba(20, 80, 170, 0.8);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.avatar-edit-btn img{
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    filter: brightness(1.2);
+}
+.avatar-edit-btn:hover{
+    transform: translateY(-1px);
+    background: rgba(35, 110, 210, 0.9);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.7);
+}
+.avatar-edit-btn:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.user-info h2{
+    margin: 0 0 4px;
+    font-size: 22px;
+    color: rgba(255,255,255,0.92);
+}
+
+.profile-actions{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-actions .navButtons_reg{
+    padding: 8px 14px;
+    min-height: 40px;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+.user-info p{
+    margin: 0;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+}
+
+.user-email-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.email-edit-btn{
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.email-edit-btn:hover{
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.user-email-edit{
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+.user-email-edit input{
+    flex: 1 1 auto;
+    min-width: 160px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+}
+.user-email-edit button{
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.user-email-edit button:hover{
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+.user-posts h3{
+    margin: 0 0 8px;
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+}
+
+#posts-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 6px 6px 20px;
+    box-sizing: border-box;
+}
+
+#posts-list > .post{
+    width: 300px;
+}
+
+#posts-empty{
+    width: 100%;
+    margin: 6px 0 0;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(90, 160, 255, 0.25);
+    background: rgba(15, 55, 110, 0.35);
+    box-shadow: 0 10px 25px rgba(0, 10, 40, 0.45);
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .siteInfo{
+        padding: 18px 10px 28px;
+    }
+    .profile-header{
+        padding: 14px 16px;
+        gap: 14px;
+    }
+    .profile-actions{
+        width: 100%;
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+    #posts-list{
+        gap: 14px;
+    }
+    #posts-list > .post{
+        width: min(92vw, 320px);
+    }
 }

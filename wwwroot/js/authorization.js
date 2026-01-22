@@ -13,7 +13,7 @@
     const authForm = document.getElementById('authorizationForm');
 
     const authStatus = document.getElementById('authStatus');
-    const profileButton = document.getElementById('profileButton');
+    let profileButton = document.getElementById('profileButton');
 
     // кнопки в authChoice
     const choiceRegister = document.getElementById('choiceRegister');
@@ -85,19 +85,24 @@
         // Метка статуса, если есть
         if (authStatus) {
             if (user) {
-                console.log("Вы вошли");
-                authStatus.textContent = `Вы вошли как: ${user.username}${user.email ? ' (' + user.email + ')' : ''}`;
-                authStatus.style.color = '#6bff80';
+                authStatus.textContent = '';
+                authStatus.style.display = 'none';
             } else {
-                console.log("Вы не авторизованы");
                 authStatus.textContent = 'Вы не авторизованы';
                 authStatus.style.color = '#ffffff';
+                authStatus.style.display = '';
             }
         }
 
         // Кнопка "Вход"
         if (authorizationButton) {
-            authorizationButton.disabled = !!user; // если вошёл — вход не нужен
+            if (user) {
+                authorizationButton.style.display = 'none';
+                authorizationButton.disabled = true;
+            } else {
+                authorizationButton.style.display = '';
+                authorizationButton.disabled = false;
+            }
         }
 
         // Кнопка "Регистрация" → "Выйти"
@@ -305,7 +310,8 @@
                 const loggedUser = {
                     id: data.userId,
                     username: data.userName || username,
-                    email: null // при желании можно возвращать email с сервера и подставлять сюда
+                    email: data.email || null,
+                    avatarUrl: data.avatarUrl || null
                 };
 
                 setAdminIdIfNeeded(loggedUser);
@@ -343,7 +349,11 @@
         authChoice.style.display = 'flex';
     }
 
-    if (profileButton) {
+    function bindProfileButton() {
+        profileButton = document.getElementById('profileButton');
+        if (!profileButton) return;
+        if (profileButton.__authBound) return;
+        profileButton.__authBound = true;
         profileButton.addEventListener('click', (e) => {
             const user = getCurrentUser();
 
@@ -355,10 +365,12 @@
 
             // не авторизован
             e.preventDefault();
-
             openAuthChoiceMenu();
         });
     }
+
+    bindProfileButton();
+    document.addEventListener("navbar:loaded", bindProfileButton);
 
     function showAuthChoiceOnLoad() {
         const user = getCurrentUser();
@@ -449,6 +461,7 @@
 
     window.getCurrentUser = getCurrentUser;
     window.setCurrentUser = setCurrentUser;
+    document.dispatchEvent(new CustomEvent("auth:ready"));
 
     updateAuthStatus();
     updateNavbarHeightVar();

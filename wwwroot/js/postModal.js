@@ -15,11 +15,111 @@ let fullscreenObserverBound = false;
 let navGuardBound = false;
 let navGuardHandler = null;
 
+const FAVORITE_STYLE_ID = "postModalFavoriteStyles";
+const FAVORITE_ICONS = {
+    normal: "/images/heart-line.svg",
+    hoverAdd: "/images/heart-add-line.svg",
+    active: "/images/heart-3-fill.svg",
+    hoverRemove: "/images/dislike-fill.svg"
+};
+const AVATAR_KEY_PREFIX = "avatar:";
+const DEFAULT_AVATAR = "/images/defaultProfilePhoto.png";
+
 function safeGetCurrentUser() {
     try {
         if (typeof getCurrentUser === "function") return getCurrentUser();
     } catch { }
     return null;
+}
+
+function getCurrentUserId() {
+    const u = safeGetCurrentUser();
+    if (u && u.id != null) return u.id;
+    try {
+        const raw = localStorage.getItem("userId");
+        if (raw) return Number(raw);
+    } catch { }
+    return null;
+}
+
+function getAvatarKey(userIdLower) {
+    if (!userIdLower) return null;
+    return `${AVATAR_KEY_PREFIX}${userIdLower}`;
+}
+
+function loadAvatar(userIdLower) {
+    const key = getAvatarKey(userIdLower);
+    if (!key) return null;
+    try {
+        return localStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
+
+function getAvatarForPost(post) {
+    const directUrl = post.authorAvatarUrl || post.AuthorAvatarUrl;
+    if (directUrl) return directUrl;
+    const rawId = post.authorId || post.AuthorId || post.authorName || post.AuthorName || "";
+    const id = String(rawId).toLowerCase();
+    return loadAvatar(id) || DEFAULT_AVATAR;
+}
+
+async function isPostFavoriteServer(userId, postId) {
+    if (!userId || !postId) return false;
+    try {
+        const resp = await fetch(`/api/favorites/${userId}/contains/${postId}`);
+        if (!resp.ok) return false;
+        return await resp.json();
+    } catch {
+        return false;
+    }
+}
+
+async function addFavoriteServer(userId, postId) {
+    if (!userId || !postId) return false;
+    try {
+        const resp = await fetch("/api/favorites", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, postId })
+        });
+        return resp.ok;
+    } catch {
+        return false;
+    }
+}
+
+async function removeFavoriteServer(userId, postId) {
+    if (!userId || !postId) return false;
+    try {
+        const resp = await fetch(`/api/favorites/${userId}/${postId}`, { method: "DELETE" });
+        return resp.ok;
+    } catch {
+        return false;
+    }
+}
+
+function ensureFavoriteStyles() {
+    if (document.getElementById(FAVORITE_STYLE_ID)) return;
+    const style = document.createElement("style");
+    style.id = FAVORITE_STYLE_ID;
+    style.textContent = `
+.post-modal-favorite.buttonLiquidGlassStyle{
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(90, 160, 255, 0.45);
+    background: rgba(20, 80, 170, 0.35);
+    box-shadow: 0 10px 24px rgba(0, 40, 120, 0.55);
+}
+.post-modal-favorite.buttonLiquidGlassStyle::before{
+    background: linear-gradient(45deg, rgba(120,180,255,0.35), rgba(10,40,120,0.55));
+}
+.post-modal-favorite.buttonLiquidGlassStyle:hover{
+    background: rgba(35, 110, 210, 0.5);
+}
+`;
+    document.head.appendChild(style);
 }
 
 function canEditPost(post) {
@@ -209,6 +309,8 @@ export function openPostModal({ post, formatPostDate, formatPostText }) {
 
     // шапка
     authorNameEl.textContent = post.authorName || post.AuthorName || "Unknown";
+    const headerAvatar = modalEl ? modalEl.querySelector(".post-modal-author img") : null;
+    if (headerAvatar) headerAvatar.src = getAvatarForPost(post);
 
     const rawCreated = post.createdAt || post.CreatedAt || post.time || post.date || post.Date;
     const rawUpdated = post.updatedAt || post.UpdatedAt || post.editTime || post.EditTime;
@@ -233,7 +335,7 @@ export function openPostModal({ post, formatPostDate, formatPostText }) {
 
     const hiddenAvatar = document.createElement("img");
     hiddenAvatar.className = "post-author-avatar";
-    hiddenAvatar.src = "/images/ProfileIcon.png";
+    hiddenAvatar.src = getAvatarForPost(post);
     hiddenAvatar.alt = "Профиль";
 
     const hiddenName = document.createElement("span");
@@ -505,6 +607,73 @@ export function openPostModal({ post, formatPostDate, formatPostText }) {
         actionsWrap.appendChild(menuBtn);
         actionsEl.appendChild(actionsWrap);
         syncMenuIcon();
+    }
+
+    const favoritesUserId = getCurrentUserId();
+    if (favoritesUserId) {
+        ensureFavoriteStyles();
+
+        const favBtn = document.createElement("button");
+        favBtn.type = "button";
+        favBtn.className = "post-modal-btn buttonLiquidGlassStyle post-modal-favorite";
+        favBtn.setAttribute("aria-label", "Избранное");
+        favBtn.title = "Избранное";
+
+        const favIcon = document.createElement("img");
+        favIcon.alt = "Избранное";
+        favBtn.appendChild(favIcon);
+
+        let isHovered = false;
+        let isFavorite = false;
+        const postId = post.id ?? post.Id ?? null;
+
+        const applyIcon = () => {
+            if (isFavorite) {
+                favIcon.src = isHovered ? FAVORITE_ICONS.hoverRemove : FAVORITE_ICONS.active;
+                return;
+            }
+            favIcon.src = isHovered ? FAVORITE_ICONS.hoverAdd : FAVORITE_ICONS.normal;
+        };
+
+        if (postId != null) {
+            isPostFavoriteServer(favoritesUserId, postId).then((val) => {
+                isFavorite = Boolean(val);
+                applyIcon();
+            });
+        }
+
+        favBtn.addEventListener("mouseenter", () => {
+            isHovered = true;
+            applyIcon();
+        });
+        favBtn.addEventListener("mouseleave", () => {
+            isHovered = false;
+            applyIcon();
+        });
+        favBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (postId == null) return;
+            if (isFavorite) {
+                removeFavoriteServer(favoritesUserId, postId).then((ok) => {
+                    if (ok) {
+                        isFavorite = false;
+                        applyIcon();
+                        document.dispatchEvent(new CustomEvent("favorites:updated"));
+                    }
+                });
+            } else {
+                addFavoriteServer(favoritesUserId, postId).then((ok) => {
+                    if (ok) {
+                        isFavorite = true;
+                        applyIcon();
+                        document.dispatchEvent(new CustomEvent("favorites:updated"));
+                    }
+                });
+            }
+        });
+
+        applyIcon();
+        actionsEl.appendChild(favBtn);
     }
 
     const closeBtn = document.createElement("button");

@@ -6,62 +6,29 @@
     <title>Профиль</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="/css/nevBarStyles.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/siteSection1.css">
     <link rel="stylesheet" href="/css/ProfileStyle.css">
     <link rel="stylesheet" href="/css/siteFooterPageStyles.css">
     <link rel="stylesheet" href="/css/other.css"/>
     <link rel="stylesheet" href="/css/authorization.css" />
     <link rel="stylesheet" href="/css/customConfirm.css" />
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/postModal.css">
 
     <script src="/js/script.js" defer></script>
 
+    <script type="module" src="/js/navbar.js"></script>
     <script src="/js/other.js" defer></script>
 
     <script src="/js/authorization.js" defer></script>
+    <script type="module" src="/js/profile.js"></script>
 </head>
 
 <body>
+    <div id="navbar-container"></div>
     <div class="bg-fixed"></div>
     <div class="page-wrapper">
-
-        <div class="navBarMenu">
-            <div class="navBarMenuLogoSiteNavBar">Monty.gg</div>
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/index.html'"
-                        class="navButton">
-                    Главная
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="navButton">
-                    Корзина
-                </button>
-
-                <button class="navButton-active" id="profileButton" disabled>
-                    Профиль
-                </button>
-
-                <button onclick="location.href='/pages/index.html'"
-                        class="miniNavButton">
-                    <img src="/images/home-9-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="miniNavButton">
-                    <img src="/images/shopping-basket-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Profile.html'"
-                        class="miniNavButton-active" disabled>
-                    <img src="/images/user-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-            </div>
-
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/announcements.html'"
-                        class="navButtonEdit">
-                    <img src="/images/pencil-ai-2-line.svg" alt="Редактировать" />
-                </button>
-            </div>
-        </div>
 
         <div id="authChoice" class="authChoiceMenu" style="display: none;">
             <div class="authChoiceContent">
@@ -70,16 +37,31 @@
             </div>
         </div>
 
-        <section class="siteInfo">
+        <main class="siteInfo">
             <div class="profile-container">
                 <!-- Аватарка и ФИО -->
                 <div class="profile-header">
                     <div class="avatar">
                         <img id="avatar" src="" alt="Аватар пользователя">
+                        <button type="button" class="avatar-edit-btn" id="avatarEditBtn" aria-label="Сменить аватар">
+                            <img src="/images/avatar-upload.svg" alt="">
+                        </button>
+                        <input type="file" id="avatarInput" accept="image/*" style="display:none;">
                     </div>
                     <div class="user-info">
                         <h2 id="user-name"></h2>
-                        <p id="user-email"></p>
+                        <div class="user-email-row">
+                            <p id="user-email"></p>
+                            <button type="button" class="email-edit-btn" id="emailEditBtn">Изменить</button>
+                        </div>
+                        <div class="user-email-edit" id="emailEditForm" style="display:none;">
+                            <input type="email" id="emailInput" placeholder="Введите почту">
+                            <button type="button" id="emailSaveBtn">Сохранить</button>
+                            <button type="button" id="emailCancelBtn">Отмена</button>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="navButtons_reg buttonLiquidGlassStyle" id="registerButton">Выход</button>
                     </div>
                 </div>
 
@@ -89,15 +71,17 @@
                     <div id="posts-list">
                         <!-- Посты будут загружаться сюда через JavaScript -->
                     </div>
+                    <div id="posts-empty" style="display: none;"></div>
                 </div>
             </div>
 
             <div>
-                <button onclick="location.href='Profile.html'" class="onTop" id="scrollBtn"></button>
+                <button id="scrollBtn">
+                    <img src="/images/arrow-up-line.svg" style="height: 100%;" alt="Наверх">
+                </button>
             </div>
             <div class="registrProfileButtons">
-                <button class="navButtons_reg" id="registerButton">Регистрация</button>
-                <button class="navButtons_reg" id="authorizationButton">Вход</button>
+                <button class="navButtons_reg buttonLiquidGlassStyle" id="authorizationButton">Вход</button>
             </div>
 
             <div id="authStatus" style="margin-top: 10px; color: #fff;"></div>
@@ -148,7 +132,7 @@
                 </form>
             </div>
         </div>
-        </section>
+        </main>
 
         <footer class="siteFooterInfo">
             <div class="aboutFoot">
@@ -174,6 +158,25 @@
                 </div>
             </div>
         </footer>
+
+        <div class="post-modal-overlay" id="postModalOverlay" style="display:none;">
+            <div class="post-modal" id="postModal" role="dialog" aria-modal="true">
+                <div class="post-modal-header" id="postModalHeader">
+                    <div class="post-modal-author">
+                        <img src="/images/ProfileIcon.png" alt="Профиль">
+                        <div class="name" id="postModalAuthorName">Unknown</div>
+                    </div>
+
+                    <div class="post-modal-meta" id="postModalMeta"></div>
+
+                    <div class="post-modal-actions" id="postModalActions">
+                    </div>
+                </div>
+
+                <div class="post-modal-body" id="postModalBody">
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

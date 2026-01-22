@@ -5,7 +5,7 @@
     <title>Главная</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="/css/nevBarStyles.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/siteSection1.css" />
     <link rel="stylesheet" href="/css/homePageStyle.css" />
     <link rel="stylesheet" href="/css/siteFooterPageStyles.css" />
@@ -17,6 +17,7 @@
 
     <script type="module" src="/js/postsMain.js?v=20260121"></script>
 
+    <script type="module" src="/js/navbar.js"></script>
     <script src="/js/other.js" defer></script>
     <script src="/js/authorization.js" defer></script>
     <script src="/js/navbarSeeAll.js" defer></script>
@@ -29,44 +30,6 @@
     <div id="navbar-container"></div>
     <div class="bg-fixed"></div>
     <div class="page-wrapper">
-
-        <div class="navBarMenu">
-            <div class="navBarMenuLogoSiteNavBar">Monty.gg</div>
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/index.html'"
-                        class="navButton-active" disabled>
-                    Главная
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="navButton">
-                    Корзина
-                </button>
-
-                <button class="navButton" id="profileButton">
-                    Профиль
-                </button>
-
-                <button onclick="location.href='/pages/index.html'"
-                        class="miniNavButton-active" disabled>
-                    <img src="/images/home-9-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="miniNavButton">
-                    <img src="/images/shopping-basket-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Profile.html'"
-                        class="miniNavButton">
-                    <img src="/images/user-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-            </div>
-
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/announcements.html'"
-                        class="navButtonEdit">
-                    <img src="/images/pencil-ai-2-line.svg" alt="Редактировать" />
-                </button>
-            </div>
-        </div>
 
         <div id="authChoice" class="authChoiceMenu" style="display: none;">
             <div class="authChoiceContent">

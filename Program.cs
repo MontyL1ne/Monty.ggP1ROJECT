@@ -129,6 +129,13 @@ using (var scope = app.Services.CreateScope())
         hasPostsTable = cmd.ExecuteScalar() != null;
     }
 
+    bool hasFavoritesTable = false;
+    using (var cmd = conn.CreateCommand())
+    {
+        cmd.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name='Favorites';";
+        hasFavoritesTable = cmd.ExecuteScalar() != null;
+    }
+
     if (hasMigrationsHistory && !hasPostsTable)
     {
         db.Database.Migrate();
@@ -157,9 +164,81 @@ using (var scope = app.Services.CreateScope())
             alterCmd.ExecuteNonQuery();
         }
 
+        AddColumnIfMissing("AuthorId", "TEXT", "'anonymous'");
         AddColumnIfMissing("Title", "TEXT", "''");
         AddColumnIfMissing("Category", "TEXT", "''");
         AddColumnIfMissing("Subcategory", "TEXT");
+    }
+
+    if (!hasFavoritesTable)
+    {
+        using var favCmd = conn.CreateCommand();
+        favCmd.CommandText = @"
+CREATE TABLE IF NOT EXISTS Favorites (
+    Id INTEGER NOT NULL CONSTRAINT PK_Favorites PRIMARY KEY AUTOINCREMENT,
+    UserId INTEGER NOT NULL,
+    PostId INTEGER NOT NULL,
+    CreatedAt TEXT NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS IX_Favorites_UserId_PostId ON Favorites(UserId, PostId);
+";
+        favCmd.ExecuteNonQuery();
+    }
+
+    // Users: AvatarUrl column
+    using (var usersCmd = conn.CreateCommand())
+    {
+        usersCmd.CommandText = "PRAGMA table_info(Users);";
+        using var usersReader = usersCmd.ExecuteReader();
+        var userCols = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        while (usersReader.Read())
+        {
+            userCols.Add(usersReader["name"].ToString() ?? string.Empty);
+        }
+        if (!userCols.Contains("AvatarUrl"))
+        {
+            using var alterUser = conn.CreateCommand();
+            alterUser.CommandText = "ALTER TABLE Users ADD COLUMN AvatarUrl TEXT";
+            alterUser.ExecuteNonQuery();
+        }
+    }
+
+    // Ensure __EFMigrationsHistory exists, then mark existing migrations as applied if empty
+    using (var histExistsCmd = conn.CreateCommand())
+    {
+        histExistsCmd.CommandText = "SELECT name FROM sqlite_master WHERE type='table' AND name='__EFMigrationsHistory';";
+        var existsObj = histExistsCmd.ExecuteScalar();
+        if (existsObj == null)
+        {
+            using var createHist = conn.CreateCommand();
+            createHist.CommandText = "CREATE TABLE __EFMigrationsHistory (MigrationId TEXT NOT NULL CONSTRAINT PK___EFMigrationsHistory PRIMARY KEY, ProductVersion TEXT NOT NULL);";
+            createHist.ExecuteNonQuery();
+        }
+    }
+
+    using (var histCountCmd = conn.CreateCommand())
+    {
+        histCountCmd.CommandText = "SELECT COUNT(*) FROM __EFMigrationsHistory;";
+        var countObj = histCountCmd.ExecuteScalar();
+        var count = countObj == null ? 0 : Convert.ToInt32(countObj);
+        if (count == 0)
+        {
+            var allMigrations = db.Database.GetMigrations().ToList();
+            foreach (var m in allMigrations)
+            {
+                using var ins = conn.CreateCommand();
+                ins.CommandText = "INSERT INTO __EFMigrationsHistory (MigrationId, ProductVersion) VALUES (@id, @ver);";
+                var p1 = ins.CreateParameter();
+                p1.ParameterName = "@id";
+                p1.Value = m;
+                var p2 = ins.CreateParameter();
+                p2.ParameterName = "@ver";
+                p2.Value = "8.0.0";
+                ins.Parameters.Add(p1);
+                ins.Parameters.Add(p2);
+                ins.ExecuteNonQuery();
+            }
+        }
     }
 
     using (var backfillCmd = conn.CreateCommand())

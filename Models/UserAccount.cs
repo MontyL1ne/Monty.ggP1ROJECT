@@ -12,6 +12,8 @@ namespace WebApplication2.Models
 
         public string PasswordHash { get; set; } = null!;
 
+        public string? AvatarUrl { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

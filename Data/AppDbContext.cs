@@ -6,6 +6,7 @@ namespace WebApplication2.Data
     public class AppDbContext : DbContext
     {
         public DbSet<UserAccount> Users { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
@@ -61,6 +62,14 @@ namespace WebApplication2.Data
 
                 entity.Property(u => u.PasswordHash)
                       .IsRequired();
+
+                entity.Property(u => u.AvatarUrl)
+                      .HasMaxLength(300);
+            });
+
+            modelBuilder.Entity<Favorite>(entity =>
+            {
+                entity.HasIndex(f => new { f.UserId, f.PostId }).IsUnique();
             });
         }
 

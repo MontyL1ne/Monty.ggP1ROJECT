@@ -68,7 +68,9 @@ namespace WebApplication2.Controllers
                 Success = true,
                 Message = "Аккаунт успешно создан",
                 UserId = user.Id,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Email = user.Email,
+                AvatarUrl = user.AvatarUrl
             });
         }
 
@@ -121,7 +123,9 @@ namespace WebApplication2.Controllers
                 Success = true,
                 Message = "Успешный вход",
                 UserId = user.Id,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Email = user.Email,
+                AvatarUrl = user.AvatarUrl
             });
         }
     }

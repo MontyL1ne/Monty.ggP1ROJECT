@@ -8,6 +8,7 @@ html, body {
     height: 100%;
     touch-action: manipulation;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: 'Consolas LF', arial;
 }
 body {
     margin: 0;
@@ -19,7 +20,6 @@ body {
     z-index: -1;
 	
 	background: url('/images/18773486_6033546.jpg');
-	font-family: 'Consolas LF', arial;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,10 +35,65 @@ body::-webkit-scrollbar {
 }
 
 .siteInfo{
-    background: url('/images/18773486_6033546.jpg');
-    border: dashed 2px rgb(183, 183, 183);
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.253);
     margin-top: 60px;
     width: 100%;
-    height: fit-content;
+    min-height: calc(100vh - 60px);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 24px 16px 40px;
+
+    background:
+        radial-gradient(1100px 500px at 15% 0%, rgba(60, 140, 255, 0.18), rgba(0,0,0,0)),
+        radial-gradient(900px 500px at 85% 5%, rgba(60, 220, 255, 0.16), rgba(0,0,0,0)),
+        rgba(0, 0, 0, 0.45);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.block_x{
+    width: 100%;
+    max-width: 1280px;
+}
+
+#favoritesContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 6px 6px 20px;
+    box-sizing: border-box;
+}
+
+#favoritesContainer > .post{
+    width: 300px;
+}
+
+#favoritesEmpty{
+    width: 100%;
+    margin: 16px 0;
+    padding: 18px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(90, 160, 255, 0.25);
+    background: rgba(15, 55, 110, 0.35);
+    box-shadow: 0 10px 25px rgba(0, 10, 40, 0.45);
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .siteInfo{
+        padding: 18px 10px 28px;
+    }
+    #favoritesContainer{
+        gap: 14px;
+    }
+    #favoritesContainer > .post{
+        width: min(92vw, 320px);
+    }
 }

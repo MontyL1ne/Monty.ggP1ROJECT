@@ -29,7 +29,23 @@ namespace WebApplication2.Controllers
                 .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync();
 
-            return Ok(posts);
+            var hasAvatar = await HasUsersAvatarColumnAsync();
+            var users = hasAvatar
+                ? await _context.Users
+                    .Select(u => new { u.Id, u.UserName, u.AvatarUrl })
+                    .ToListAsync()
+                : await _context.Users
+                    .Select(u => new { u.Id, u.UserName, AvatarUrl = (string?)null })
+                    .ToListAsync();
+
+            var byId = users.ToDictionary(u => u.Id, u => u.AvatarUrl);
+            var byName = users
+                .Where(u => !string.IsNullOrWhiteSpace(u.UserName))
+                .GroupBy(u => u.UserName.ToLower())
+                .ToDictionary(g => g.Key, g => g.First().AvatarUrl);
+
+            var result = posts.Select(p => MapPostWithAvatar(p, byId, byName));
+            return Ok(result);
         }
 
         // GET: /api/posts/{id}
@@ -41,7 +57,22 @@ namespace WebApplication2.Controllers
             if (post == null)
                 return NotFound();
 
-            return post;
+            var hasAvatar = await HasUsersAvatarColumnAsync();
+            var users = hasAvatar
+                ? await _context.Users
+                    .Select(u => new { u.Id, u.UserName, u.AvatarUrl })
+                    .ToListAsync()
+                : await _context.Users
+                    .Select(u => new { u.Id, u.UserName, AvatarUrl = (string?)null })
+                    .ToListAsync();
+
+            var byId = users.ToDictionary(u => u.Id, u => u.AvatarUrl);
+            var byName = users
+                .Where(u => !string.IsNullOrWhiteSpace(u.UserName))
+                .GroupBy(u => u.UserName.ToLower())
+                .ToDictionary(g => g.Key, g => g.First().AvatarUrl);
+
+            return Ok(MapPostWithAvatar(post, byId, byName));
         }
 
         // POST: /api/posts
@@ -91,15 +122,17 @@ namespace WebApplication2.Controllers
             _context.Posts.Add(post);
             await _context.SaveChangesAsync();
 
+            var avatarUrl = await ResolveAvatarUrlAsync(post);
+
             // 🔹 шлём событие во все открытые клиенты (SSE)
             await _postStream.BroadcastAsync(new
             {
                 type = "created",
-                post
+                post = MapPostWithAvatar(post, avatarUrl)
             });
 
             // вернём то же, что фронт ждёт
-            return CreatedAtAction(nameof(GetPostById), new { id = post.Id }, post);
+            return CreatedAtAction(nameof(GetPostById), new { id = post.Id }, MapPostWithAvatar(post, avatarUrl));
         }
 
         // PUT: /api/posts/{id}
@@ -122,10 +155,12 @@ namespace WebApplication2.Controllers
 
             await _context.SaveChangesAsync();
 
+            var avatarUrl = await ResolveAvatarUrlAsync(post);
+
             await _postStream.BroadcastAsync(new
             {
                 type = "updated",
-                post
+                post = MapPostWithAvatar(post, avatarUrl)
             });
 
             return NoContent();
@@ -149,6 +184,95 @@ namespace WebApplication2.Controllers
             });
 
             return NoContent();
+        }
+
+        private static object MapPostWithAvatar(Post post, Dictionary<int, string?> byId, Dictionary<string, string?> byName)
+        {
+            string? avatarUrl = null;
+            if (int.TryParse(post.AuthorId, out var uid) && byId.TryGetValue(uid, out var urlById))
+            {
+                avatarUrl = urlById;
+            }
+            else
+            {
+                var key = (post.AuthorName ?? "").ToLower();
+                if (!string.IsNullOrWhiteSpace(key) && byName.TryGetValue(key, out var urlByName))
+                {
+                    avatarUrl = urlByName;
+                }
+            }
+
+            return MapPostWithAvatar(post, avatarUrl);
+        }
+
+        private static object MapPostWithAvatar(Post post, string? avatarUrl)
+        {
+            return new
+            {
+                post.Id,
+                post.AuthorId,
+                post.AuthorName,
+                post.Title,
+                post.Text,
+                post.Category,
+                post.Subcategory,
+                post.ImagesJson,
+                post.CreatedAt,
+                post.UpdatedAt,
+                AuthorAvatarUrl = avatarUrl
+            };
+        }
+
+        private async Task<string?> ResolveAvatarUrlAsync(Post post)
+        {
+            if (!await HasUsersAvatarColumnAsync())
+            {
+                return null;
+            }
+
+            if (int.TryParse(post.AuthorId, out var uid))
+            {
+                var userById = await _context.Users.FirstOrDefaultAsync(u => u.Id == uid);
+                return userById?.AvatarUrl;
+            }
+
+            if (!string.IsNullOrWhiteSpace(post.AuthorName))
+            {
+                var userByName = await _context.Users.FirstOrDefaultAsync(u => u.UserName == post.AuthorName);
+                return userByName?.AvatarUrl;
+            }
+
+            return null;
+        }
+
+        private async Task<bool> HasUsersAvatarColumnAsync()
+        {
+            try
+            {
+                var conn = _context.Database.GetDbConnection();
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    await conn.OpenAsync();
+                }
+
+                using var cmd = conn.CreateCommand();
+                cmd.CommandText = "PRAGMA table_info(Users);";
+                using var reader = await cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var name = reader["name"]?.ToString();
+                    if (string.Equals(name, "AvatarUrl", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                // если не получилось проверить — считаем, что колонки нет
+            }
+
+            return false;
         }
     }
 }

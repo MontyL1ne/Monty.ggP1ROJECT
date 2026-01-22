@@ -6,62 +6,29 @@
     <title>Корзина</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" href="/css/nevBarStyles.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/siteSection1.css">
     <link rel="stylesheet" href="/css/BasketStyle.css">
     <link rel="stylesheet" href="/css/siteFooterPageStyles.css">
     <link rel="stylesheet" href="/css/other.css" />
     <link rel="stylesheet" href="/css/authorization.css" />
     <link rel="stylesheet" href="/css/customConfirm.css" />
+    <link rel="stylesheet" href="/css/posts.css">
+    <link rel="stylesheet" href="/css/postModal.css">
 
     <script src="/js/script.js" defer></script>
 
+    <script type="module" src="/js/navbar.js"></script>
     <script src="/js/other.js" defer></script>
 
     <script src="/js/authorization.js" defer></script>
+    <script type="module" src="/js/basket.js"></script>
 </head>
 
 <body>
+    <div id="navbar-container"></div>
     <div class="bg-fixed"></div>
     <div class="page-wrapper">
-
-        <div class="navBarMenu">
-            <div class="navBarMenuLogoSiteNavBar">Monty.gg</div>
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/index.html'"
-                        class="navButton">
-                    Главная
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="navButton-active" disabled>
-                    Корзина
-                </button>
-
-                <button class="navButton" id="profileButton">
-                    Профиль
-                </button>
-
-                <button onclick="location.href='/pages/index.html'"
-                        class="miniNavButton">
-                    <img src="/images/home-9-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Basket.html'"
-                        class="miniNavButton-active" disabled>
-                    <img src="/images/shopping-basket-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-                <button onclick="location.href='/pages/Profile.html'"
-                        class="miniNavButton">
-                    <img src="/images/user-fill.svg" style="width: 100%; height: 100%;" />
-                </button>
-            </div>
-
-            <div class="navBarMenuButtons">
-                <button onclick="location.href='/pages/announcements.html'"
-                        class="navButtonEdit">
-                    <img src="/images/pencil-ai-2-line.svg" alt="Редактировать" />
-                </button>
-            </div>
-        </div>
 
         <div id="authChoice" class="authChoiceMenu" style="display: none;">
             <div class="authChoiceContent">
@@ -116,16 +83,36 @@
                 </form>
             </div>
         </div>
-        <section class="siteInfo">
-            <div>
-                <button onclick="location.href='Basket.html'" class="onTop" id="scrollBtn"></button>
+        <main class="siteInfo">
+            <div class="block_x">
+                <div id="favoritesContainer"></div>
+                <div id="favoritesEmpty" style="display: none;"></div>
             </div>
-        </section>
+        </main>
 
 
         <button id="scrollBtn">
             <img src="/images/arrow-up-line.svg" style="height: 100%;" alt="Наверх">
         </button>
+
+        <div class="post-modal-overlay" id="postModalOverlay" style="display:none;">
+            <div class="post-modal" id="postModal" role="dialog" aria-modal="true">
+                <div class="post-modal-header" id="postModalHeader">
+                    <div class="post-modal-author">
+                        <img src="/images/ProfileIcon.png" alt="Профиль">
+                        <div class="name" id="postModalAuthorName">Unknown</div>
+                    </div>
+
+                    <div class="post-modal-meta" id="postModalMeta"></div>
+
+                    <div class="post-modal-actions" id="postModalActions">
+                    </div>
+                </div>
+
+                <div class="post-modal-body" id="postModalBody">
+                </div>
+            </div>
+        </div>
 
         <footer class="siteFooterInfo">
             <div class="aboutFoot">

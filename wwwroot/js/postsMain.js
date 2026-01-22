@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeCategory = "";
     const DRAFT_KEY = "postDraft";
     let draftSaveTimer = null;
+    const AVATAR_KEY_PREFIX = "avatar:";
+    const DEFAULT_AVATAR = "/images/defaultProfilePhoto.png";
 
     const categoryConfig = [
         { name: "Вещи", sub: ["Одежда", "Обувь", "Аксессуары", "Мебель"] },
@@ -128,6 +130,29 @@ document.addEventListener("DOMContentLoaded", () => {
         showMainCategories();
         updateCancelPostButton();
         scheduleSaveDraft();
+    }
+
+    function getAvatarKey(userIdLower) {
+        if (!userIdLower) return null;
+        return `${AVATAR_KEY_PREFIX}${userIdLower}`;
+    }
+
+    function loadAvatar(userIdLower) {
+        const key = getAvatarKey(userIdLower);
+        if (!key) return null;
+        try {
+            return localStorage.getItem(key);
+        } catch {
+            return null;
+        }
+    }
+
+    function getAvatarForPost(post) {
+        const directUrl = post.authorAvatarUrl || post.AuthorAvatarUrl;
+        if (directUrl) return directUrl;
+        const rawId = post.authorId || post.AuthorId || post.authorName || post.AuthorName || "";
+        const id = String(rawId).toLowerCase();
+        return loadAvatar(id) || DEFAULT_AVATAR;
     }
 
     function renderPostCardImages(postDiv, images, anchorEl) {
@@ -792,6 +817,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="post-text">${textHtml}</p>
     `;
 
+        const avatarImg = postDiv.querySelector(".post-author-avatar");
+        if (avatarImg) avatarImg.src = getAvatarForPost(post);
+
         // картинки карточки: одна + avito-hover
         const images = Array.isArray(post.images) ? post.images : [];
         renderPostCardImages(postDiv, images, postDiv.querySelector(".post-text"));
@@ -849,14 +877,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let authorName = "Unknown";
             let authorId = "anonymous";
+            let authorAvatarUrl = null;
 
             try {
                 const u = safeGetCurrentUser();
                 if (u) {
                     if (u.username) authorName = u.username;
-                    if (u.email || u.username) {
+                    if (u.id != null) {
+                        authorId = String(u.id);
+                    } else if (u.email || u.username) {
                         authorId = u.email || u.username;
                     }
+                    if (u.avatarUrl) authorAvatarUrl = u.avatarUrl;
+                }
+                if (authorId === "anonymous") {
+                    const storedId = localStorage.getItem("userId");
+                    if (storedId) authorId = String(storedId);
                 }
             } catch {
                 // игнорируем
@@ -901,7 +937,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const postForDisplay = {
                 ...created,
-                images: Array.isArray(created.images) ? created.images : imagesFromServer
+                images: Array.isArray(created.images) ? created.images : imagesFromServer,
+                AuthorAvatarUrl: created.AuthorAvatarUrl || created.authorAvatarUrl || authorAvatarUrl || null
             };
 
             if (postsContainer) {
