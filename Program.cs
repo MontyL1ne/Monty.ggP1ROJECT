@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen();
 // DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? "Data Source=app.db"));
+        ?? "Data Source=data_db/app.db"));
 
 // CORS
 builder.Services.AddCors(options =>
@@ -65,7 +65,7 @@ app.UseCors();
 // wwwroot
 app.UseStaticFiles();
 
-var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "uploads");
+var uploadsPath = Path.Combine(builder.Environment.ContentRootPath, "data_db", "uploads");
 if (!Directory.Exists(uploadsPath))
 {
     Directory.CreateDirectory(uploadsPath);
@@ -249,8 +249,13 @@ CREATE UNIQUE INDEX IF NOT EXISTS IX_Favorites_UserId_PostId ON Favorites(UserId
 }
 
 
-app.UseStatusCodePagesWithReExecute("/index.html");
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+app.UseStatusCodePagesWithReExecute("/pages/index.html");
+
+app.MapControllers();
+
+app.MapFallbackToFile("/pages/index.html");
 
 app.Run();
