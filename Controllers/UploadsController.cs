@@ -30,7 +30,8 @@ namespace WebApplication2.Controllers
                 return BadRequest(new { message = "Файлы не получены (Request.Form.Files пуст)." });
             }
 
-            var uploadsRoot = Path.Combine(_env.ContentRootPath, "uploads");
+            // 🔹 ИЗМЕНЕНО: сохраняем в data_db/uploads, которая проброшена на сервер Яндекса
+            var uploadsRoot = Path.Combine(_env.ContentRootPath, "data_db", "uploads");
             if (!Directory.Exists(uploadsRoot))
                 Directory.CreateDirectory(uploadsRoot);
 
@@ -54,6 +55,7 @@ namespace WebApplication2.Controllers
 
                     await image.SaveAsWebpAsync(filePath, encoder);
 
+                    // 🔹 URL для фронтенда остается прежним, так как в Program.cs мы привязали /uploads к этой папке
                     var urlPath = $"/uploads/{newFileName}".Replace("\\", "/");
                     resultUrls.Add(urlPath);
                 }
