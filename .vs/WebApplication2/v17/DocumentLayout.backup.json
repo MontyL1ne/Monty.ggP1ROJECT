@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\source\\repos\\Monty.ggP1ROJECT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\source\\repos\\monty.ggp1roject\\wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\source\\repos\\monty.ggp1roject\\wwwroot\\pages\\profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\pages\\profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\source\\repos\\monty.ggp1roject\\wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|solutionrelative:wwwroot\\css\\announcements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C69DDCE5-63FA-A520-F5E2-48BAD5DFA536}|WebApplication2.csproj|c:\\users\\\u0430\u0440\u0442\u0435\u043C\\source\\repos\\monty.ggp1roject\\wwwroot\\css\\other.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -176,13 +176,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Profile.html",
               "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\source\\repos\\Monty.ggP1ROJECT\\wwwroot\\pages\\Profile.html",
               "RelativeDocumentMoniker": "wwwroot\\pages\\Profile.html",
               "ToolTip": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\source\\repos\\Monty.ggP1ROJECT\\wwwroot\\pages\\Profile.html",
               "RelativeToolTip": "wwwroot\\pages\\Profile.html",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAADUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2026-01-17T20:04:10.469Z",
               "EditorCaption": ""
@@ -243,7 +243,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "announcements.css",
               "DocumentMoniker": "C:\\Users\\\u0410\u0440\u0442\u0435\u043C\\source\\repos\\Monty.ggP1ROJECT\\wwwroot\\css\\announcements.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\announcements.css",

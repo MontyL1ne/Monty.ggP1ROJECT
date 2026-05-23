@@ -248,4 +248,9 @@ CREATE UNIQUE INDEX IF NOT EXISTS IX_Favorites_UserId_PostId ON Favorites(UserId
     }
 }
 
+
+app.UseStatusCodePagesWithReExecute("/index.html");
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.Run();
