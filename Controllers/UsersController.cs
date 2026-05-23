@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2.Data;
 using System.IO;
@@ -48,7 +48,8 @@ namespace WebApplication2.Controllers
                 ext = ".jpg";
             }
 
-            var avatarsDir = Path.Combine(_env.ContentRootPath, "uploads", "avatars");
+            // 🔹 ИЗМЕНЕНО: Добавили "data_db" в путь, чтобы файлы сохранялись на сервере Яндекса
+            var avatarsDir = Path.Combine(_env.ContentRootPath, "data_db", "uploads", "avatars");
             if (!Directory.Exists(avatarsDir))
             {
                 Directory.CreateDirectory(avatarsDir);
