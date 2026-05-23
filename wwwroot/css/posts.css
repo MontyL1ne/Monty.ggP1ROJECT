@@ -1,7 +1,4 @@
-﻿/* posts.css — стили ленты/постов (твой прежний стиль + сетка) */
-
-/* POSTS CONTAINER — СЕТКА */
-#postsContainer {
+﻿#postsContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -15,15 +12,13 @@
     box-sizing: border-box;
 }
 
-/* чтобы карточки не растягивались по высоте */
 #postsContainer > .post {
     height: fit-content;
 }
 
-/* POST CARD — ТВОЙ СТИЛЬ (как на фото) */
 .post {
+    gap: 12px;
     width: 300px;
-    aspect-ratio: 4 / 6.5;
     margin: 0;
 
     display: flex;
@@ -38,8 +33,8 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     border: 1px solid #0000004b;
-
-    padding: 18px;
+    
+    padding: 14px;
     height: auto;
     margin: 0;
     color: #ffffff70;
@@ -63,9 +58,8 @@
     transform: translateY(-2px);
 }
 
-/* =========================
-   ШАПКА ПОСТА
-   ========================= */
+/*
+   ШАПКА ПОСТА*/
 
 .post-header {
     display: flex;
@@ -99,6 +93,7 @@
 
 /* POST TEXT */
 .post-text{
+    margin-bottom: 4px;
   max-height: 100px;
   overflow: hidden;
   position: relative;
@@ -109,10 +104,6 @@
   mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
 
 }
-
-/* =========================
-   MENU BTN (⋯) + POPUP
-   ========================= */
 
 .menu-btn {
     background: transparent;
@@ -168,9 +159,8 @@
     background: rgba(255, 107, 107, 0.15);
 }
 
-/* =========================
-   РЕДАКТИРОВАНИЕ ПОСТА
-   ========================= */
+/* 
+   РЕДАКТИРОВАНИЕ ПОСТА */
 
 .inline-editor {
     width: 100%;
@@ -263,21 +253,20 @@
     transform: translateX(-50%) translateY(0);
 }
 
-/* =========================
-   IMAGES IN POST
-   ========================= */
+/*
+   IMAGES IN POST*/
 
 
 .post-images.post-images--single {
     justify-items: center;
 }
 
-.post .post-images {
-    margin-top: auto;
+.post-images {
+    margin-top: 12px;
 }
 
 .post-images.post-images--single .image-wrapper {
-    max-width: 80%;
+    max-width: 100%;
     width: 100%;
 }
 
@@ -289,7 +278,7 @@
 .image-wrapper {
     position: relative;
     overflow: hidden;  
-    border-radius: 16px;
+    border-radius: 20px;
     background: radial-gradient(
         circle at top left,
         rgba(255, 255, 255, 0.08),
@@ -453,10 +442,12 @@
     }
 
     .post {
-        width: calc(50% - 16px);
-        flex: 0 0 calc(50% - 16px);
-        max-width: 300px;
-    }
+    height: fit-content;
+    min-height: unset;
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
 
     .post .image-wrapper{
         aspect-ratio: 15 / 16;
